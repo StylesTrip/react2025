@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Fast Feedback</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -18,14 +18,14 @@ const Home = () => {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Current user: {auth?.user?.email}
         </p>
 
-        <button onClick={(e) => auth.signinWithGithub()}>Sign In</button>
-        <div>
-          {auth?.user?.email}
-        </div>
+        {!auth.user && (
+          <button onClick={(e) => auth.signinWithGithub()}>Sign In</button>
+        )}
+        
+
         {auth?.user && (
         <button onClick={(e) => auth.signout()}>Sign Out</button>
         )}
